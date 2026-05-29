@@ -101,11 +101,25 @@ with tabs[1]:
             st.markdown("**Personal**")
             dfp = pd.DataFrame(act["personal"])
             dfp = st.data_editor(dfp, num_rows="dynamic", key=f"per{i}",
-                                 column_config={"cargo": st.column_config.SelectboxColumn("cargo", options=cargos_nombres(cfg))})
+                                 column_config={
+                                     "cargo": st.column_config.SelectboxColumn("Cargo", options=cargos_nombres(cfg)),
+                                     "dedicacion": st.column_config.NumberColumn("Dedicación", format="%.2f", min_value=0.0),
+                                     "cantidad": st.column_config.NumberColumn("Cantidad", format="%.2f", min_value=0.0),
+                                 })
             act["personal"] = recs(dfp, ["cargo"])
             st.markdown("**Logística e insumos**")
+            st.caption("Valor unitario en pesos (COP) por unidad. Se precarga el precio del catálogo; puedes cambiarlo.")
             dfl = pd.DataFrame(act["logistica"])
-            dfl = st.data_editor(dfl, num_rows="dynamic", key=f"log{i}")
+            if not dfl.empty and "valor" in dfl.columns:
+                catmap = {l["nombre"]: l.get("valor") for l in cfg["catalogo"]["logistica"]}
+                dfl["valor"] = dfl["valor"].apply(lambda v: catmap.get(v, v))   # nombre catalogo -> numero
+                dfl["valor"] = pd.to_numeric(dfl["valor"], errors="coerce")
+            dfl = st.data_editor(dfl, num_rows="dynamic", key=f"log{i}",
+                                 column_config={
+                                     "concepto": st.column_config.TextColumn("Concepto"),
+                                     "cantidad": st.column_config.NumberColumn("Cantidad", format="%.2f", min_value=0.0),
+                                     "valor": st.column_config.NumberColumn("Valor unitario (COP)", format="dollar", min_value=0),
+                                 })
             act["logistica"] = recs(dfl, ["concepto"])
 
 # ===== 3. Entregables =====
@@ -115,14 +129,25 @@ with tabs[2]:
     ent["activa"] = st.checkbox("Incluir entregables", value=bool(ent.get("activa", True)))
     dfe = pd.DataFrame(ent["items"])
     dfe = st.data_editor(dfe, num_rows="dynamic", key="ent",
-                         column_config={"cargo": st.column_config.SelectboxColumn("cargo", options=cargos_nombres(cfg))})
+                         column_config={
+                             "nombre": st.column_config.TextColumn("Entregable"),
+                             "cargo": st.column_config.SelectboxColumn("Cargo", options=cargos_nombres(cfg)),
+                             "dedicacion": st.column_config.NumberColumn("Dedicación", format="%.2f", min_value=0.0),
+                             "cantidad": st.column_config.NumberColumn("Cantidad", format="%.2f", min_value=0.0),
+                             "tiempo_meses": st.column_config.NumberColumn("Tiempo (meses)", format="%.2f", min_value=0.0),
+                         })
     ent["items"] = recs(dfe, ["cargo"])
 
 # ===== 4. Desembolsos =====
 with tabs[3]:
     st.write("Porcentajes de pago. Deben sumar 100%.")
     dfd = pd.DataFrame(cfg["desembolsos"])
-    dfd = st.data_editor(dfd, num_rows="dynamic", key="des")
+    dfd = st.data_editor(dfd, num_rows="dynamic", key="des",
+                         column_config={
+                             "n": st.column_config.NumberColumn("#", format="%d"),
+                             "pct": st.column_config.NumberColumn("% (decimal: 0.30 = 30%)", format="%.2f", min_value=0.0, max_value=1.0),
+                             "obs": st.column_config.TextColumn("Observación"),
+                         })
     cfg["desembolsos"] = recs(dfd, ["pct"])
     suma = sum(float(d.get("pct", 0) or 0) for d in cfg["desembolsos"])
     if abs(suma - 1.0) > 0.001:
@@ -135,11 +160,21 @@ with tabs[4]:
     st.write("Precios base (única fuente). Normalmente se ajusta pocas veces.")
     st.markdown("**Tabla salarial**")
     dfc = pd.DataFrame(cfg["catalogo"]["cargos"])
-    dfc = st.data_editor(dfc, num_rows="dynamic", key="cat_cargos")
+    dfc = st.data_editor(dfc, num_rows="dynamic", key="cat_cargos",
+                         column_config={
+                             "nombre": st.column_config.TextColumn("Cargo"),
+                             "salario": st.column_config.NumberColumn("Salario base mensual (COP)", format="dollar", min_value=0),
+                             "factor": st.column_config.NumberColumn("Factor prestacional", format="%.2f", min_value=0.0),
+                         })
     cfg["catalogo"]["cargos"] = recs(dfc, ["nombre"])
     st.markdown("**Costos logísticos (valor unitario)**")
     dfcl = pd.DataFrame(cfg["catalogo"]["logistica"])
-    dfcl = st.data_editor(dfcl, num_rows="dynamic", key="cat_log")
+    dfcl = st.data_editor(dfcl, num_rows="dynamic", key="cat_log",
+                          column_config={
+                              "nombre": st.column_config.TextColumn("Concepto"),
+                              "unidad": st.column_config.TextColumn("Unidad"),
+                              "valor": st.column_config.NumberColumn("Valor unitario (COP)", format="dollar", min_value=0),
+                          })
     cfg["catalogo"]["logistica"] = recs(dfcl, ["nombre"])
 
 # ===== 6. Generar =====
