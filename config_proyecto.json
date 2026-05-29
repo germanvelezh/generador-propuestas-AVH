@@ -1,0 +1,322 @@
+{
+  "proyecto": {
+    "codigo": "CF-20260315-05-01-OC_AVH",
+    "objeto": "OFERTA TECNICA Y ECONOMICA PARA CARACTERIZACION DE LA FLORA TERRESTRE - BAJO CAUCA",
+    "cliente": "CORPORACION FORESTALIA",
+    "fecha": "2026-05-29",
+    "n_titulos": 5
+  },
+  "comercial": {
+    "utilidad": 0.25,
+    "iva": 0.19
+  },
+  "desembolsos": [
+    {
+      "n": 1,
+      "pct": 0.3,
+      "obs": "Para inicio de actividades"
+    },
+    {
+      "n": 2,
+      "pct": 0.3,
+      "obs": "Una vez finalizada la fase de campo"
+    },
+    {
+      "n": 3,
+      "pct": 0.3,
+      "obs": "Contra entrega de documentos finales"
+    },
+    {
+      "n": 4,
+      "pct": 0.1,
+      "obs": "Contra entrega de ajustes a satisfaccion"
+    }
+  ],
+  "catalogo": {
+    "cargos": [
+      {
+        "nombre": "Coordinador(a) general",
+        "salario": 6831500,
+        "factor": 1.59
+      },
+      {
+        "nombre": "Profesional flora",
+        "salario": 5255000,
+        "factor": 1.3
+      },
+      {
+        "nombre": "Profesional fauna",
+        "salario": 5255000,
+        "factor": 1.59
+      },
+      {
+        "nombre": "Profesional SIG",
+        "salario": 5780500,
+        "factor": 1.59
+      },
+      {
+        "nombre": "Profesional Social",
+        "salario": 5780500,
+        "factor": 1.59
+      },
+      {
+        "nombre": "Auxiliar Tecnico",
+        "salario": 3047900,
+        "factor": 1.3
+      },
+      {
+        "nombre": "Auxiliar de campo",
+        "salario": 1576500,
+        "factor": 1.3
+      }
+    ],
+    "logistica": [
+      {
+        "nombre": "Transporte mayor",
+        "unidad": "Trayecto",
+        "valor": 900000
+      },
+      {
+        "nombre": "Transporte menor",
+        "unidad": "Trayecto",
+        "valor": 80000
+      },
+      {
+        "nombre": "Hospedaje",
+        "unidad": "Noche",
+        "valor": 70000
+      },
+      {
+        "nombre": "Alimentacion",
+        "unidad": "dia/persona",
+        "valor": 70000
+      },
+      {
+        "nombre": "Hidratacion y refrigerios",
+        "unidad": "Unidad",
+        "valor": 25000
+      }
+    ]
+  },
+  "actividades": [
+    {
+      "nombre": "LEVANTAMIENTO INFORMACION PRIMARIA FLORA",
+      "activa": true,
+      "tps_campo": 90,
+      "tps_entregables": 60,
+      "personal": [
+        {
+          "cargo": "Coordinador(a) general",
+          "dedicacion": 1.29,
+          "cantidad": 1
+        },
+        {
+          "cargo": "Profesional flora",
+          "dedicacion": 1.0,
+          "cantidad": 4
+        },
+        {
+          "cargo": "Auxiliar Tecnico",
+          "dedicacion": 1.0,
+          "cantidad": 4
+        },
+        {
+          "cargo": "Profesional SIG",
+          "dedicacion": 2.57,
+          "cantidad": 1
+        },
+        {
+          "cargo": "Auxiliar de campo",
+          "dedicacion": 1.0,
+          "cantidad": 4
+        }
+      ],
+      "logistica": [
+        {
+          "concepto": "Transporte mayor",
+          "cantidad": 6,
+          "valor": "Transporte mayor"
+        },
+        {
+          "concepto": "Hidratacion y refrigerios",
+          "cantidad": 1080,
+          "valor": "Hidratacion y refrigerios"
+        },
+        {
+          "concepto": "Materiales e insumos (global)",
+          "cantidad": 1,
+          "valor": 2138800
+        },
+        {
+          "concepto": "Equipos, software y papeleria (global)",
+          "cantidad": 1,
+          "valor": 9624600
+        },
+        {
+          "concepto": "EPP (global)",
+          "cantidad": 1,
+          "valor": 1600000
+        }
+      ]
+    },
+    {
+      "nombre": "LEVANTAMIENTO INFORMACION PRIMARIA FAUNA / HIDROBIOLOGICOS",
+      "activa": false,
+      "tps_campo": 9,
+      "tps_entregables": 30,
+      "personal": [
+        {
+          "cargo": "Coordinador(a) general",
+          "dedicacion": 0.5,
+          "cantidad": 1
+        },
+        {
+          "cargo": "Profesional fauna",
+          "dedicacion": 1.0,
+          "cantidad": 3
+        },
+        {
+          "cargo": "Profesional SIG",
+          "dedicacion": 1.3,
+          "cantidad": 1
+        },
+        {
+          "cargo": "Auxiliar de campo",
+          "dedicacion": 0.3,
+          "cantidad": 2
+        }
+      ],
+      "logistica": [
+        {
+          "concepto": "Transporte mayor",
+          "cantidad": 2,
+          "valor": "Transporte mayor"
+        },
+        {
+          "concepto": "Hidratacion y refrigerios",
+          "cantidad": 27,
+          "valor": "Hidratacion y refrigerios"
+        },
+        {
+          "concepto": "Materiales e insumos (global)",
+          "cantidad": 1,
+          "valor": 300000
+        },
+        {
+          "concepto": "Equipos, software y papeleria (global)",
+          "cantidad": 1,
+          "valor": 2070000
+        },
+        {
+          "concepto": "EPP (global)",
+          "cantidad": 1,
+          "valor": 600000
+        }
+      ]
+    },
+    {
+      "nombre": "PRIMATES",
+      "activa": false,
+      "tps_campo": 15,
+      "tps_entregables": 45,
+      "personal": [
+        {
+          "cargo": "Coordinador(a) general",
+          "dedicacion": 0.4,
+          "cantidad": 1
+        },
+        {
+          "cargo": "Profesional fauna",
+          "dedicacion": 1.0,
+          "cantidad": 2
+        },
+        {
+          "cargo": "Profesional SIG",
+          "dedicacion": 1.3,
+          "cantidad": 1
+        },
+        {
+          "cargo": "Auxiliar Tecnico",
+          "dedicacion": 0.3,
+          "cantidad": 1
+        }
+      ],
+      "logistica": [
+        {
+          "concepto": "Transporte mayor",
+          "cantidad": 2,
+          "valor": "Transporte mayor"
+        },
+        {
+          "concepto": "Hidratacion y refrigerios",
+          "cantidad": 18,
+          "valor": "Hidratacion y refrigerios"
+        },
+        {
+          "concepto": "Materiales e insumos (global)",
+          "cantidad": 1,
+          "valor": 100000
+        },
+        {
+          "concepto": "Equipos, software y papeleria (global)",
+          "cantidad": 1,
+          "valor": 60000
+        }
+      ]
+    }
+  ],
+  "entregables": {
+    "activa": true,
+    "items": [
+      {
+        "nombre": "Coordinacion general de entregables",
+        "cargo": "Coordinador(a) general",
+        "dedicacion": 1.0,
+        "cantidad": 1,
+        "tiempo_meses": 1.0
+      },
+      {
+        "nombre": "Clasificacion y caracterizacion de coberturas y ecosistemas",
+        "cargo": "Profesional flora",
+        "dedicacion": 1.0,
+        "cantidad": 1,
+        "tiempo_meses": 0.6
+      },
+      {
+        "nombre": "Delimitacion y definicion de area de influencia flora",
+        "cargo": "Profesional flora",
+        "dedicacion": 1.0,
+        "cantidad": 1,
+        "tiempo_meses": 0.6
+      },
+      {
+        "nombre": "Caracterizacion de flora arborea",
+        "cargo": "Profesional flora",
+        "dedicacion": 1.0,
+        "cantidad": 1,
+        "tiempo_meses": 3.0
+      },
+      {
+        "nombre": "Caracterizacion de flora epifita en veda",
+        "cargo": "Profesional flora",
+        "dedicacion": 1.0,
+        "cantidad": 1,
+        "tiempo_meses": 3.0
+      },
+      {
+        "nombre": "Plan de compensacion del componente biotico y fichas de manejo",
+        "cargo": "Profesional flora",
+        "dedicacion": 1.0,
+        "cantidad": 1,
+        "tiempo_meses": 1.5
+      },
+      {
+        "nombre": "GDB y Cartografia",
+        "cargo": "Profesional flora",
+        "dedicacion": 1.29,
+        "cantidad": 0.7,
+        "tiempo_meses": 1.0
+      }
+    ]
+  }
+}
